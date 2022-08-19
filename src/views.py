@@ -35,7 +35,7 @@ def currency(request):
 async def create_rate(request):
     data = await request.post()
     rate_line = Rate(rate=data["rate"], currency_id=data["currency_id"], source_id=data["source_id"])
-    request.app['db_session'].add(source)
+    request.app['db_session'].add(rate_line)
     request.app['db_session'].commit()
     return aiohttp.web.HTTPFound(location=request.app.router['index'].url_for())
 
