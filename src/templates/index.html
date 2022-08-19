@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Rates</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <nav
+        style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px"
+      >
+        <ul>
+          <li><a href="/source/" role="button">Add source</a></li>
+        </ul>
+      </nav>
+
+      {% for rate in rates%}
+      <ul>
+        <li>
+          {%if not rate.rate%}
+          <a href="/detail/{{rate.id}}" role="button" class="outline"
+            >{{rate.currency_id}}</a
+          >
+          <a href="/done/{{rate.id}}" role="button">Mark Done</a>
+          <a href="/delete/{{note.id}}" role="button" class="contrast"
+            >Delete rate</a
+          >
+          {% else %}
+
+          <a href="/detail/{{rate.id}}" role="button" class="secondary"
+            ><s>{{rate.source_id}}</s></a
+          >
+          {% endif %}
+        </li>
+      </ul>
+      {% endfor %}
+    </main>
+  </body>
+</html>
